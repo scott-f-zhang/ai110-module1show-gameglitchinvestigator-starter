@@ -25,13 +25,18 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- [x] Describe the game's purpose.  
+  The game is a Streamlit number-guesser where players choose a difficulty, guess a secret number within a range, receive higher/lower feedback, and try to win within a limited number of attempts while tracking score.
+
+- [x] Detail which bugs you found.  
+  I found multiple gameplay bugs: high/low hint directions were reversed, guesses could be compared against a string secret on some turns (causing misleading feedback), `Attempts left` could increase after `New Game` due to inconsistent attempt baseline, and `Show Hint` would disappear after reruns because hint text was not persisted.
+
+- [x] Explain what fixes you applied.  
+  I refactored core logic into `logic_utils.py` (`get_range_for_difficulty`, `parse_guess`, `check_guess`, `update_score`), fixed hint direction mapping, removed mixed-type secret comparison in app flow, aligned attempt init/reset to `0`, reset round state consistently on `New Game`, and persisted hint text in `st.session_state` so hints survive reruns. I also added `tests/conftest.py` for stable pytest imports and added a regression test for hint direction in `tests/test_game_logic.py`.
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+- ![Demo](https://cleanshot.com/share/pyqy0q7T+)
 
 ## 🚀 Stretch Features
 

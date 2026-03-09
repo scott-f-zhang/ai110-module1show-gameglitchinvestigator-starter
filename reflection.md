@@ -39,6 +39,8 @@ AI helped by suggesting where to add a targeted regression test, and I used that
 
 - How would you explain Streamlit "reruns" and session state to a friend who has never used Streamlit?
 
+Every time you interact with the app (e.g. click a button), Streamlit reruns the whole script from top to bottom—that’s a rerun. Normal variables are re-initialized on each rerun. `st.session_state` is a dictionary-like object maintained on the server for the current session; it’s meant to **persist** data across reruns. So anything you need to “remember” (e.g. the secret number, attempt count) should live in session_state so it isn’t lost on rerun.
+
 ---
 
 ## 5. Looking ahead: your developer habits
@@ -47,3 +49,7 @@ AI helped by suggesting where to add a targeted regression test, and I used that
   - This could be a testing habit, a prompting strategy, or a way you used Git.
 - What is one thing you would do differently next time you work with AI on a coding task?
 - In one or two sentences, describe how this project changed the way you think about AI generated code.
+
+1. Mark each place where there’s a bug before fixing it.
+2. Keep a reflection document to record what you did and your reasoning.
+3. AI-generated code needs good context; think clearly about what to give the AI—too much, irrelevant, or too little information all hurt the result.
